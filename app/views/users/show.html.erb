@@ -4,9 +4,9 @@
     <h1>
       <%= @user.name %>
     </h1>
-    <p> <%= @user.phone %> </p>
+    <p> <%= format_phone(@user.phone) %> </p>
     <p> <%= @user.email %> </p>
-    <p> <%= @user.cpf %> </p>
+    <p> <%= format_cpf(@user.cpf) %> </p>
   </div>
 
   <div class="user__actions">

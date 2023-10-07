@@ -7,5 +7,5 @@ import { application } from "./application"
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
-import PhoneMaskController from "./phone_mask_controller"
-application.register("phone-mask", PhoneMaskController)
+import InputMaskController from "./input_mask_controller"
+application.register("input-mask", InputMaskController)
