@@ -1,13 +1,7 @@
 <%= simple_form_for @user do |f| %>
-  <% if user.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-      <ul>
-        <% user.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+  <% if @user.errors.any? %>
+    <div class="error-message">
+      <%= @user.errors.full_messages.to_sentence.capitalize %>
     </div>
   <% end %>
 
@@ -15,8 +9,6 @@
   <%= f.input :email, label_html: { style: 'display: block' } %>
   <%= f.input :phone, label_html: { style: 'display: block' }, input_html: { data: { controller: "phone-mask" } } %>
   <%= f.input :cpf, label_html: { style: 'display: block' } %>
-
-  <div>
-    <%= f.button :submit %>
-  </div>
+  <%= link_to "Cancelar", users_path, class: "btn btn--light" %>
+  <%= f.submit class: "btn btn--secondary"  %>
 <% end %>
