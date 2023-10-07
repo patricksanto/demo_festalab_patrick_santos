@@ -3,11 +3,11 @@
   flex-wrap: wrap;
   gap: var(--space-xs);
 
-  &__group {
+  group {
     flex: 1;
   }
 
-  &__input {
+  input {
     display: block;
     width: 100%;
     max-width: 100%;

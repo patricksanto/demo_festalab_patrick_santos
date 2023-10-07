@@ -1,14 +1,18 @@
-<%= simple_form_for @user do |f| %>
+<%= simple_form_for user, html: { class: "user form" } do |f| %>
   <% if @user.errors.any? %>
     <div class="error-message">
       <%= @user.errors.full_messages.to_sentence.capitalize %>
     </div>
   <% end %>
 
-  <%= f.input :name, label_html: { style: 'display: block' } %>
-  <%= f.input :email, label_html: { style: 'display: block' } %>
-  <%= f.input :phone, label_html: { style: 'display: block' }, input_html: { data: { controller: "phone-mask" } } %>
-  <%= f.input :cpf, label_html: { style: 'display: block' } %>
-  <%= link_to "Cancelar", users_path, class: "btn btn--light" %>
-  <%= f.submit class: "btn btn--secondary"  %>
+  <%= f.input :name, input_html: { autofocus: true }%>
+  <%= f.input :email%>
+  <%= f.input :phone, input_html: { data: { controller: "phone-mask" } } %>
+  <%= f.input :cpf%>
+
+  <div>
+    <%= link_to "Cancelar", users_path, class: "btn btn--light" %>
+    <%= f.submit class: "btn btn--secondary"  %>
+  </div>
+
 <% end %>

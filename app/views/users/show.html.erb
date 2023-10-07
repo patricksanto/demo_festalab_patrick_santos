@@ -1,10 +1,16 @@
-<p style="color: green"><%= notice %></p>
+<main class="container">
+  <%= link_to sanitize("&larr; Voltar"), users_path %>
+  <div class="header">
+    <h1>
+      <%= @user.name %>
+    </h1>
+    <p> <%= @user.phone %> </p>
+    <p> <%= @user.email %> </p>
+    <p> <%= @user.cpf %> </p>
+  </div>
 
-<%= render @user %>
-
-<div>
-  <%= link_to "Edit this user", edit_user_path(@user) %> |
-  <%= link_to "Back to users", users_path %>
-
-  <%= button_to "Destroy this user", @user, method: :delete %>
-</div>
+  <div class="user__actions">
+    <%= link_to "Edit this user", edit_user_path(@user) %> |
+    <%= link_to "Destroy this user", @user, method: :delete%>
+  </div>
+</main>
