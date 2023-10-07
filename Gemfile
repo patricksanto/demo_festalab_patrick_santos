@@ -70,3 +70,9 @@ group :test do
   gem "selenium-webdriver"
 
 end
+
+gem "valid_email2"
+gem "cpf_cnpj"
+gem "webpacker"
+gem "simple_form"
+gem 'sass-rails'
