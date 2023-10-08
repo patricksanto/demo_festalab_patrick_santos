@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus";
 import Inputmask from "inputmask";
 
-export default class extends Controller {
+export default class InputMaskController extends Controller {
   static targets = ["phone", "cpf"];
 
   connect() {
@@ -13,7 +13,8 @@ export default class extends Controller {
       mask: "(99) 99999-9999",
       placeholder: "",
       clearIncomplete: true,
-      showMaskOnHover: false
+      showMaskOnHover: true,
+      removeMaskOnSubmit: true
     });
 
     const cpfMask = new Inputmask({

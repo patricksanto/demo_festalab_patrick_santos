@@ -3,6 +3,18 @@
     <h1>Usuários</h1>
     <%= link_to "Novo Usuário", new_user_path, class: "btn btn--primary"%>
   </div>
+
+  <div class="container">
+    <%= simple_form_for users_path, method: :get, html: { class: "user form" } do %>
+      <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Type a keyword"
+        %>
+      <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+
     <% @users.each do |user| %>
       <%= render user %>
     <% end %>
