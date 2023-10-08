@@ -1,6 +1,6 @@
 <main class="container">
-  <%= link_to sanitize("&larr; Voltar"), users_path %>
-  <div class="header">
+  <%= link_to t('actions.back').html_safe , users_path %>
+  <div class="header user show">
     <h1>
       <%= @user.name %>
     </h1>
@@ -10,7 +10,9 @@
   </div>
 
   <div class="user__actions">
-    <%= link_to "Edit this user", edit_user_path(@user) %> |
-    <%= link_to "Destroy this user", @user, method: :delete%>
+    <%= link_to t('actions.edit', model: t('activerecord.models.user')), edit_user_path(@user),
+                class: 'btn btn--secondary' %>
+    <%= button_to t('actions.destroy', model: t('activerecord.models.user')), @user,
+                  method: :delete, class: 'btn btn--light' %>
   </div>
 </main>

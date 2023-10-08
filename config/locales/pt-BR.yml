@@ -1,0 +1,72 @@
+pt-BR:
+  general:
+    title: "Usuários"
+    search_placeholder: "Buscar usuários..."
+    search: "Buscar"
+    cancel: "Cancelar"
+    confirmations:
+      delete_user: "Tem certeza de que deseja excluir este usuário?"
+  actions:
+    new: "Novo %{model}"
+    edit: "Editar %{model}"
+    simple_edit: "Editar"
+    destroy: "Excluir %{model}"
+    simple_destroy: "Excluir"
+    search: "Buscar"
+    back: "&larr; Voltar"
+  messages:
+    success:
+      create: "%{model} criado com sucesso."
+      update: "%{model} atualizado com sucesso."
+      destroy: "%{model} excluído com sucesso."
+    error:
+      create: "Erro ao criar o %{model}."
+      update: "Erro ao atualizar o %{model}."
+      destroy: "Erro ao excluir o %{model}."
+      generic: "Algo deu errado."
+  activerecord:
+    models:
+      user: "Usuário"
+    attributes:
+      user:
+        name: "Nome"
+        email: "E-mail"
+        phone: "Telefone"
+        cpf: "CPF"
+    errors:
+      messages:
+        inclusion: "não está incluído na lista"
+        exclusion: "não está disponível"
+        invalid: "é inválido"
+        confirmation: "não corresponde à confirmação"
+        accepted: "deve ser aceito"
+        empty: "não pode ser vazio"
+        blank: "não pode ser em branco"
+        present: "deve ser em branco"
+        too_long:
+          one: "é muito longo (máximo: 1 caracter)"
+          other: "é muito longo (máximo: %{count} caracteres)"
+        too_short:
+          one: "é muito curto (mínimo: 1 caracter)"
+          other: "é muito curto (mínimo: %{count} caracteres)"
+        wrong_length:
+          one: "não tem o tamanho esperado (esperado: 1 caracter)"
+          other: "não tem o tamanho esperado (esperado: %{count} caracteres)"
+        not_a_number: "não é um número"
+        not_an_integer: "não é um número inteiro"
+        greater_than: "deve ser maior que %{count}"
+        greater_than_or_equal_to: "deve ser maior ou igual a %{count}"
+        equal_to: "deve ser igual a %{count}"
+        less_than: "deve ser menor que %{count}"
+        less_than_or_equal_to: "deve ser menor ou igual a %{count}"
+        odd: "deve ser ímpar"
+        even: "deve ser par"
+        taken: "já está em uso"
+        record_invalid: "A validação falhou: %{errors}"
+  helpers:
+    select:
+      prompt: "Por favor selecione"
+    submit:
+      create: "Criar %{model}"
+      submit: "Salvar %{model}"
+      update: "Atualizar %{model}"

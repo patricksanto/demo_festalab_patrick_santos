@@ -1,10 +1,9 @@
 <main class="container">
   <div class="header">
-    <h1>Usuários</h1>
-    <%= link_to "Novo Usuário", new_user_path,
-        class: "btn btn--primary",
-        data: { turbo_frame: dom_id(User.new)}
-    %>
+    <h1><%= t('general.title') %></h1>
+    <%= link_to t('actions.new', model: t('activerecord.models.user')), new_user_path,
+                class: "btn btn--primary",
+                data: { turbo_frame: dom_id(User.new)} %>
   </div>
 
   <%= simple_form_for users_path, method: :get,
@@ -12,10 +11,10 @@
     <%= text_field_tag :query,
           params[:query],
           class: "form-control",
-          placeholder: "Type a keyword",
+          placeholder: t('general.search_placeholder'),
           data: { search_target: "input", action: "input->search#search" }
       %>
-    <%= submit_tag "Buscar", name: "", class: "btn btn-primary" %>
+    <%= submit_tag t('general.search'), name: "", class: "btn btn-primary" %>
   <% end %>
 
   <%= turbo_frame_tag User.new %>
