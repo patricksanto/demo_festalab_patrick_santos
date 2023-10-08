@@ -1,7 +1,10 @@
 <main class="container">
   <div class="header">
     <h1>Usuários</h1>
-    <%= link_to "Novo Usuário", new_user_path, class: "btn btn--primary"%>
+    <%= link_to "Novo Usuário", new_user_path,
+        class: "btn btn--primary",
+        data: { turbo_frame: dom_id(User.new)}
+    %>
   </div>
 
   <div class="container">
@@ -15,7 +18,11 @@
     <% end %>
   </div>
 
+  <%= turbo_frame_tag User.new %>
+
+  <%= turbo_frame_tag "users" do %>
     <% @users.each do |user| %>
       <%= render user %>
     <% end %>
+  <% end %>
 </main>

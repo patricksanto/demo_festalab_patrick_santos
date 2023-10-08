@@ -5,5 +5,7 @@
     <h1>Editar</h1>
   </div>
 
-  <%= render "form", user: @user %>
+  <%= turbo_frame_tag @user do %>
+    <%= render "form", user: @user %>
+  <% end %>
 </main>

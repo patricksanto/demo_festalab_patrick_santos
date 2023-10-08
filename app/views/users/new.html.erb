@@ -4,6 +4,7 @@
   <div class="header">
     <h1>Novo usuário</h1>
   </div>
-
-  <%= render "form", user: @user %>
+  <%= turbo_frame_tag @user do %>
+    <%= render "form", user: @user %>
+  <% end %>
 </main>

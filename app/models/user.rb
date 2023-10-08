@@ -9,8 +9,11 @@ class User < ApplicationRecord
   validate :valid_cpf
   validates :phone, format: { with: /\A\d+\z/ }
 
-  pg_search_scope :search_by_name, against: :name
-
+  pg_search_scope :search_everything,
+                  against: %i[name cpf phone email],
+                  using: {
+                    tsearch: { prefix: true }
+                  }
 
   def valid_cpf
     errors.add(:cpf, 'inválido ') unless CPF.valid?(cpf)
