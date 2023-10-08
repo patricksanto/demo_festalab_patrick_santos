@@ -3,10 +3,15 @@ class UsersController < ApplicationController
 
   # GET /users or /users.json
   def index
-    if params[:query]
-      @users = User.search_everything(params[:query])
+    if params[:query] && !params[:query].empty?
+      @users = User.search_by_substring(params[:query])
     else
       @users = User.all
+    end
+
+    respond_to do |format|
+      format.html
+      format.turbo_stream { render turbo_stream: turbo_stream.replace("users", partial: "users/user", collection: @users, as: :user) }
     end
   end
 
