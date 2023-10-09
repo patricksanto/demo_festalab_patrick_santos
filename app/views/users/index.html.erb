@@ -2,6 +2,10 @@
   <div class="header">
     <h1><%= t('general.title') %></h1>
 
+     <%= link_to t('actions.new', model: t('activerecord.models.user')), new_user_path,
+                class: "btn btn--primary",
+                data: { turbo_frame: dom_id(User.new)} %>
+
     <%= simple_form_for users_path, method: :get,
                                   html: { class: "search form" } do %>
       <%= text_field_tag :query,
@@ -13,9 +17,6 @@
       <%= submit_tag t('general.search'), name: "", class: "btn btn-primary" %>
     <% end %>
 
-    <%= link_to t('actions.new', model: t('activerecord.models.user')), new_user_path,
-                class: "btn btn--primary",
-                data: { turbo_frame: dom_id(User.new)} %>
   </div>
 
   <%= turbo_frame_tag User.new %>
