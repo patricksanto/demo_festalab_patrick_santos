@@ -8,11 +8,6 @@ class UsersController < ApplicationController
     else
       @users = User.all
     end
-
-    respond_to do |format|
-      format.html
-      format.turbo_stream { render turbo_stream: turbo_stream.replace("users", partial: "users/user", collection: @users, as: :user) }
-    end
   end
 
   # GET /users/1 or /users/1.json

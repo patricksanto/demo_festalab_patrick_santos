@@ -1,10 +1,24 @@
 .form {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
+  justify-content: center;
   gap: var(--space-xs);
 
   group {
+    max-width: 80%;
+  }
+
+  .inputs{
+    width: 100%;
     flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    @include media(tabletAndUp) {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-xs);
+    }
   }
 
   input {
@@ -25,4 +39,17 @@
       border-color: var(--color-primary);
     }
   }
+
+  .buttons{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: var(--space-xs);
+    align-self: flex-end;
+  }
+}
+
+.form.search{
+  flex-direction: row;
+  flex-wrap: nowrap;
 }

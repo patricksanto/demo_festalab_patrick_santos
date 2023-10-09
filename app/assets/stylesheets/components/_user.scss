@@ -24,6 +24,11 @@
 
 #users{
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-xs);
+  grid-template-columns: 1fr;
+
+
+  @include media(tabletAndUp) {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xs);
+  }
 }

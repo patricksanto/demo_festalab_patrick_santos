@@ -1,21 +1,22 @@
 <main class="container">
   <div class="header">
     <h1><%= t('general.title') %></h1>
+
+    <%= simple_form_for users_path, method: :get,
+                                  html: { class: "search form" } do %>
+      <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: t('general.search_placeholder'),
+            data: { search_target: "input", action: "input->search#search" }
+        %>
+      <%= submit_tag t('general.search'), name: "", class: "btn btn-primary" %>
+    <% end %>
+
     <%= link_to t('actions.new', model: t('activerecord.models.user')), new_user_path,
                 class: "btn btn--primary",
                 data: { turbo_frame: dom_id(User.new)} %>
   </div>
-
-  <%= simple_form_for users_path, method: :get,
-                                  html: { class: "user form" } do %>
-    <%= text_field_tag :query,
-          params[:query],
-          class: "form-control",
-          placeholder: t('general.search_placeholder'),
-          data: { search_target: "input", action: "input->search#search" }
-      %>
-    <%= submit_tag t('general.search'), name: "", class: "btn btn-primary" %>
-  <% end %>
 
   <%= turbo_frame_tag User.new %>
 

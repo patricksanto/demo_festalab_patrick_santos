@@ -1,6 +1,5 @@
-<%= simple_form_for user, html: { class: "user form" },
+<%= simple_form_for user, html: { class: "form container user" },
                           data: { controller: "input-mask" } do |f| %>
-
 
   <% if @user.errors.any? %>
     <div class="error-message">
@@ -8,14 +7,14 @@
     </div>
   <% end %>
 
-  <%= f.input :name, input_html: { autofocus: true }%>
-  <%= f.input :email%>
-  <%= f.input :phone, input_html: { data: { "input-mask-target": "phone" } } %>
-  <%= f.input :cpf, input_html: { data: { "input-mask-target": "cpf" } } %>
+  <div class="inputs">
+     <%= f.input :name, input_html: { autofocus: true }%>
+    <%= f.input :email%>
+    <%= f.input :phone, input_html: { data: { "input-mask-target": "phone" } } %>
+    <%= f.input :cpf, input_html: { data: { "input-mask-target": "cpf" } } %>
+  </div>
 
-
-
-  <div>
+  <div class="buttons">
     <%= link_to t('general.cancel'), users_path, class: "btn btn--light" %>
     <%= f.submit class: "btn btn--secondary"  %>
   </div>
