@@ -263,7 +263,7 @@ DEPENDENCIES
   tzinfo-data
   valid_email2
   web-console
-  webpacker
+  webpacker (~> 5.x)
 
 RUBY VERSION
    ruby 3.1.2p20

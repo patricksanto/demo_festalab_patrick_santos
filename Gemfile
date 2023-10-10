@@ -3,78 +3,57 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.1.2"
 
-# Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.0.8"
+# Core
+gem "rails", "~> 7.0.8"  # The core framework for building web applications.
+gem "sqlite3", "~> 1.4"  # Lightweight database used mainly for development.
+gem "puma", "~> 5.0"     # Web server for Rails.
 
-# The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
-gem "sprockets-rails"
+# Assets
+gem "sprockets-rails"    # The original Rails asset pipeline.
+gem "sass-rails"         # Enables using Sass for styling.
+gem "webpacker", '~> 5.x'# Manages JavaScript, CSS, and assets.
 
-# Use sqlite3 as the database for Active Record
-gem "sqlite3", "~> 1.4"
+# Frontend Enhancements
+gem "importmap-rails"    # Use JavaScript with ESM import maps.
+gem "turbo-rails"        # Hotwire's SPA-like page accelerator.
+gem "stimulus-rails"     # Hotwire's modest JavaScript framework.
 
-# Use the Puma web server [https://github.com/puma/puma]
-gem "puma", "~> 5.0"
+# APIs and JSON
+gem "jbuilder"           # Build JSON views.
 
-# Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
-gem "importmap-rails"
+# Caching & Background Jobs
+gem "redis", "~> 4.0"    # In-memory data structure store, used for caching and background jobs.
 
-# Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
-gem "turbo-rails"
+# TimeZone and Optimization
+gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ] # TimeZone data for Windows.
+gem "bootsnap", require: false  # Reduces app boot time.
 
-# Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
-gem "stimulus-rails"
+# Forms
+gem "simple_form"        # Provides a simple way to create forms.
+gem "valid_email2"       # Validates emails.
+gem "cpf_cnpj"           # Validates Brazilian CPF and CNPJ numbers.
 
-# Build JSON APIs with ease [https://github.com/rails/jbuilder]
-gem "jbuilder"
-
-# Use Redis adapter to run Action Cable in production
-gem "redis", "~> 4.0"
-
-# Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
-# gem "kredis"
-
-# Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
-# gem "bcrypt", "~> 3.1.7"
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
-
-# Reduces boot times through caching; required in config/boot.rb
-gem "bootsnap", require: false
-
-# Use Sass to process CSS
-# gem "sassc-rails"
-
-# Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-# gem "image_processing", "~> 1.2"
-
+# Development & Testing
 group :development, :test do
-  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem "debug", platforms: %i[ mri mingw x64_mingw ] # Ruby debugging gem.
 end
 
 group :development do
-  # Use console on exceptions pages [https://github.com/rails/web-console]
-  gem "web-console"
-
-  # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
-  # gem "rack-mini-profiler"
-
-  # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
-  # gem "spring"
+  gem "web-console"      # Rails console in your browser.
 end
 
 group :test do
-  # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
-  gem "capybara"
-  gem "selenium-webdriver"
-
+  gem "capybara"         # Helps test web applications by simulating user actions.
+  gem "selenium-webdriver" # Browser automation tool, mainly for testing.
 end
 
-gem "valid_email2"
-gem "cpf_cnpj"
-gem "webpacker"
-gem "simple_form"
-gem "sass-rails"
-gem "pg"
-gem "faker"
+# Others
+gem "faker"              # Generates fake data for seeding, testing, etc.
+gem "pg"                 # PostgreSQL adapter for Active Record.
+
+# Uncomment gems based on your application's requirements.
+# gem "kredis"           # Use Kredis to get higher-level data types in Redis.
+# gem "bcrypt", "~> 3.1.7" # Use Active Model has_secure_password.
+# gem "image_processing", "~> 1.2" # Use Active Storage variants.
+# gem "rack-mini-profiler" # Add speed badges.
+# gem "spring"           # Speed up commands on slow machines / big apps.
