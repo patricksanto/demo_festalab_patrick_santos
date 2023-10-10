@@ -1,24 +1,80 @@
-# README
+# User management system for Festalab
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Description:
 
-Things you may want to cover:
+This project encompasses the full spectrum of developing a user management system. From the foundational setup to detailed tests, our focus has been on ensuring an application that is both robust and user-friendly.
 
-* Ruby version
+## Features and Changes:
 
-* System dependencies
+### Initial Setup
+Initialized project with rails new.
+Switched database to PostgreSQL with the pg gem.
 
-* Configuration
 
-* Database creation
+### Gem Integrations
+Validation: valid_email2 for email checks and cpf_cnpj for CPF & CNPJ validation.
+Frontend & Design: Incorporated simple_form and sass-rails.
+Seeding: Integrated faker for dynamic data seeding.
 
-* Database initialization
 
-* How to run the test suite
+### User Model & Validations
+Created a user model that validates properties like name, email, phone, and CPF.
+Utilized valid_email2 and cpf_cnpj for specialized validations.
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+### Frontend Enhancements
+Designed an interface that emphasizes user experience.
+Adopted an input mask library for intuitive form inputs.
+Created a responsive design to ensure seamless usage across devices.
+Integrated turbo frames to make navigation smoother and more dynamic.
 
-* ...
+
+## Testing:
+
+To run the test suite, simply execute:
+
+rails test:system
+
+
+## Prerequisites:
+
+Ruby: Ensure Ruby is installed (ruby -v). If not, check Ruby's official documentation.
+Ruby on Rails: Must have Rails (rails -v). If absent, gem install rails.
+PostgreSQL: As our preferred database. See official documentation for setup.
+Node.js & Yarn: To manage frontend assets. Install from Node.js and Yarn.
+Project Setup:
+
+Clone the Repository:
+
+
+git clone [repository-url]
+cd [repository-name]
+
+Install Ruby Dependencies:
+
+bundle install
+
+
+Install JavaScript Packages:
+
+yarn install
+
+
+Database Setup:
+rails db:create
+rails db:migrate
+
+
+Optional Seed (hope you like Harry Potter!):
+rails db:seed
+
+
+### Running the Project:
+
+Just need to start the Rails server:
+rails s
+
+and access: 
+http://localhost:3000
+
+Hope you like it <3
