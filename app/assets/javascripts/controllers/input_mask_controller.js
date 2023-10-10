@@ -1,6 +1,3 @@
-import { Controller } from "@hotwired/stimulus";
-import Inputmask from "inputmask";
-
 export default class InputMaskController extends Controller {
   static targets = ["phone", "cpf"];
 
