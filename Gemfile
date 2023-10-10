@@ -11,7 +11,6 @@ gem "puma", "~> 5.0"     # Web server for Rails.
 # Assets
 gem "sprockets-rails"    # The original Rails asset pipeline.
 gem "sass-rails"         # Enables using Sass for styling.
-gem "webpacker", '~> 5.x'# Manages JavaScript, CSS, and assets.
 
 # Frontend Enhancements
 gem "importmap-rails"    # Use JavaScript with ESM import maps.
