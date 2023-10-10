@@ -5,43 +5,90 @@ class UsersTest < ApplicationSystemTestCase
     @user = users(:one)
   end
 
-  test "visiting the index" do
-    visit users_url
-    assert_selector "h1", text: "Users"
+  test "Showing a user" do
+    visit users_path
+    click_link @user.name
+
+    assert_selector "h1", text: @user.name
   end
 
-  test "should create user" do
-    visit users_url
-    click_on "New user"
+  test "Creating a new user" do
+    visit users_path
+    assert_selector "h1", text: I18n.t('general.title')
 
-    fill_in "Cpf", with: @user.cpf
-    fill_in "Email", with: @user.email
-    fill_in "Name", with: @user.name
-    fill_in "Phone", with: @user.phone
-    click_on "Create User"
+    click_on I18n.t('actions.new', model: I18n.t('activerecord.models.user'))
+    fill_in I18n.t('activerecord.attributes.user.name'), with: @user.name
+    fill_in I18n.t('activerecord.attributes.user.email'), with: @user.email
+    fill_in I18n.t('activerecord.attributes.user.phone'), with: @user.phone
+    fill_in I18n.t('activerecord.attributes.user.cpf'), with: @user.cpf
 
-    assert_text "User was successfully created"
-    click_on "Back"
+    click_on I18n.t('helpers.submit.create', model: I18n.t('activerecord.models.user'))
+
+
+    assert_selector "h1", text: I18n.t('general.title')
+    assert_text @user.name
   end
 
-  test "should update User" do
-    visit user_url(@user)
-    click_on "Edit this user", match: :first
+  test "Updating a user" do
+    visit users_path
+    assert_selector "h1", text: I18n.t('general.title')
 
-    fill_in "Cpf", with: @user.cpf
-    fill_in "Email", with: @user.email
-    fill_in "Name", with: @user.name
-    fill_in "Phone", with: @user.phone
-    click_on "Update User"
+    click_on I18n.t('actions.simple_edit'), match: :first
+    fill_in I18n.t('activerecord.attributes.user.name'), with: "John Lennon Updated"
 
-    assert_text "User was successfully updated"
-    click_on "Back"
+    click_on I18n.t('helpers.submit.update', model: I18n.t('activerecord.models.user'))
+
+    assert_selector "h1", text: I18n.t('general.title')
+    assert_text "John Lennon Updated"
   end
 
-  test "should destroy User" do
-    visit user_url(@user)
-    click_on "Destroy this user", match: :first
+  test "successful search by name" do
+    visit users_path
+    fill_in :query, with: @user.name
+    click_on I18n.t('general.search')
+    assert_text @user.name
+  end
 
-    assert_text "User was successfully destroyed"
+  test "successful search by email" do
+    visit users_path
+    fill_in :query, with: @user.email
+    click_on I18n.t('general.search')
+    assert_text @user.name
+  end
+
+  test "successful search by phone" do
+    visit users_path
+    fill_in :query, with: @user.phone
+    click_on I18n.t('general.search')
+    assert_text @user.name
+  end
+
+  test "successful search by cpf" do
+    visit users_path
+    fill_in :query, with: @user.cpf
+    click_on I18n.t('general.search')
+    assert_text @user.name
+  end
+
+  test "unsuccessful search" do
+    visit users_path
+    fill_in :query, with: "NonExistentTerm"
+    click_on I18n.t('general.search')
+
+    assert_no_text @user.name
+    assert_no_text @user.email
+    assert_no_text @user.phone
+    assert_no_text @user.cpf
+  end
+
+  test "Destroying a user" do
+    visit users_path
+    assert_text @user.name
+
+    accept_confirm do
+      click_on I18n.t('actions.simple_destroy'), match: :first
+    end
+
+    assert_no_text @user.name
   end
 end

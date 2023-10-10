@@ -1,22 +1,17 @@
-<div id="<%= dom_id user %>">
-  <p>
-    <strong>Name:</strong>
-    <%= user.name %>
-  </p>
+<%= turbo_frame_tag user do %>
+  <div class="user">
+    <%= link_to user.name, user_path(user), data: { turbo_frame: "_top" } %>
 
-  <p>
-    <strong>Email:</strong>
-    <%= user.email %>
-  </p>
-
-  <p>
-    <strong>Phone:</strong>
-    <%= user.phone %>
-  </p>
-
-  <p>
-    <strong>Cpf:</strong>
-    <%= user.cpf %>
-  </p>
-
-</div>
+    <div class="user__actions">
+      <%= button_to t('actions.simple_destroy'),
+                    user_path(user),
+                    method: :delete,
+                    form: { data: { turbo_frame: "_top" }},
+                    data: { turbo_confirm: t('general.confirmations.delete_user') },
+                    class: 'btn btn--light' %>
+      <%= link_to t('actions.simple_edit'),
+                  edit_user_path(user),
+                  class: 'btn btn--light' %>
+    </div>
+  </div>
+<% end %>

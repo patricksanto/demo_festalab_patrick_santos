@@ -1,14 +1,29 @@
-<p style="color: green"><%= notice %></p>
+<main class="container">
+  <div class="header">
+    <h1><%= t('general.title') %></h1>
 
-<h1>Users</h1>
+     <%= link_to t('actions.new', model: t('activerecord.models.user')), new_user_path,
+                class: "btn btn--primary",
+                data: { turbo_frame: dom_id(User.new)} %>
 
-<div id="users">
-  <% @users.each do |user| %>
-    <%= render user %>
-    <p>
-      <%= link_to "Show this user", user %>
-    </p>
+    <%= simple_form_for users_path, method: :get,
+                                  html: { class: "search form" } do %>
+      <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: t('general.search_placeholder'),
+            data: { search_target: "input", action: "input->search#search" }
+        %>
+      <%= submit_tag t('general.search'), name: "", class: "btn btn-primary" %>
+    <% end %>
+
+  </div>
+
+  <%= turbo_frame_tag User.new %>
+
+  <%= turbo_frame_tag "users" do %>
+    <% @users.each do |user| %>
+      <%= render user %>
+    <% end %>
   <% end %>
-</div>
-
-<%= link_to "New user", new_user_path %>
+</main>

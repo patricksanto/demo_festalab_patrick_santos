@@ -1,10 +1,18 @@
-<p style="color: green"><%= notice %></p>
+<main class="container">
+  <%= link_to t('actions.back').html_safe , users_path %>
+  <div class="header user show">
+    <h1>
+      <%= @user.name %>
+    </h1>
+    <p> <%= format_phone(@user.phone) %> </p>
+    <p> <%= @user.email %> </p>
+    <p> <%= format_cpf(@user.cpf) %> </p>
+  </div>
 
-<%= render @user %>
-
-<div>
-  <%= link_to "Edit this user", edit_user_path(@user) %> |
-  <%= link_to "Back to users", users_path %>
-
-  <%= button_to "Destroy this user", @user, method: :delete %>
-</div>
+  <div class="user__actions">
+    <%= link_to t('actions.edit', model: t('activerecord.models.user')), edit_user_path(@user),
+                class: 'btn btn--secondary' %>
+    <%= button_to t('actions.destroy', model: t('activerecord.models.user')), @user,
+                  method: :delete, class: 'btn btn--light' %>
+  </div>
+</main>

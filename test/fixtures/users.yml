@@ -1,13 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  email: MyString
-  phone: MyString
-  cpf: MyString
+  name: John Lenon
+  email: johnlenon@gmail.com
+  phone: 11924645612
+  cpf: 21922941077
 
 two:
-  name: MyString
-  email: MyString
-  phone: MyString
-  cpf: MyString
+  name: Ringo Star
+  email: ringo@gmail.com
+  phone: 21995030707
+  cpf: 21791331033
